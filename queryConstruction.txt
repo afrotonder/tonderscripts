@@ -1,0 +1,59 @@
+select * from tbl_projects P, tbl_data_set D where P.id = D.project_id and P.deleted = 0 and D.deleted = 0
+
+
+select * from tbl_projects P where P.status = 0 and P.deleted = 0\
+
+select * from tbl_user_info U, tbl_institution I where U.institution_id = I.inst_id
+
+
+SELECT project_id, name, description FROM `tbl_data_set` WHERE status = 0 and deleted = 0
+
+
+selecciona info de proyectos con el no9mbre de la institucion pertenecinete al proyecto escogido
+select p.title, p.description, p.contact_name, i.inst_name from tbl_projects p, tbl_institution i where p.status = 0 and p.deleted = 0 and i.inst_id in (select institution_id from tbl_user_info where 1)
+
+selecciona info de datasets cin el nombre de contacto del proyecto madre del dataset y el nombre de la institucion del proyecto
+select d.name, d.description, p.contact_name, i.inst_name from tbl_data_set d, tbl_projects p, tbl_institution i where d.status = 0 and p.status = 0 and d.deleted = 0 and p.deleted = 0 and d.project_id = p.id and i.inst_id in (select institution_id from tbl_user_info where 1)
+
+
+super query que seleciona toda la info de proyectos y datasets junta
+
+select p.id, p.title, p.description, p.contact_name, i.inst_name from tbl_projects p, tbl_institution i where p.status = 0 and p.deleted = 0 and i.inst_id in (select institution_id from tbl_user_info where 1)
+union
+select d.id, d.name, d.description, p.contact_name, i.inst_name from tbl_data_set d, tbl_projects p, tbl_institution i where d.status = 0 and p.status = 0 and d.deleted = 0 and p.deleted = 0 and d.project_id = p.id and i.inst_id in (select institution_id from tbl_user_info where 1)
+
+esto ni que lo coge todo de datasets y projects en orden alfabetico. soy tito db hoy xD
+
+select * from (
+  select p.title, p.description, p.contact_name, i.inst_name from tbl_projects p, tbl_institution i where p.status = 0 and p.deleted = 0 and i.inst_id in (select institution_id from tbl_user_info where 1)
+    union
+  select d.name, d.description, p.contact_name, i.inst_name from tbl_data_set d, tbl_projects p, tbl_institution i where d.status = 0 and p.status = 0 and d.deleted = 0 and p.deleted = 0 and d.project_id = p.id and i.inst_id in (select institution_id from tbl_user_info where 1)
+) as data order by title ASC
+
+
+
+el query de arriba mejorado poero con inn id demas por culpa del union
+  select * from (
+      select @temp:="project", p.title, p.description, p.contact_name, i.inst_name, p.id from tbl_projects p, tbl_institution i where p.status = 0 and p.deleted = 0 and i.inst_id in (select institution_id from tbl_user_info where 1)
+  		union
+  	select @temp:="dataset", d.name, d.description, p.contact_name, p.title, i.inst_name from tbl_data_set d, tbl_projects p, tbl_institution i where d.status = 0 and p.status = 0 and d.deleted = 0 and p.deleted = 0 and d.project_id = 	p.id and i.inst_id in (select institution_id from tbl_user_info where 1)
+     ) as data order by title ASC
+
+
+
+ultimate version ahora si funciona
+
+
+"SELECT * FROM (
+            SELECT @temp:='project', p.title, p.description, p.contact_name, i.inst_name, @temp2='dataset_name'
+            FROM tbl_projects p, tbl_institution i
+            WHERE p.status = 0 AND p.deleted = 0 AND i.inst_id IN (SELECT u.institution_id
+                                                                   FROM tbl_user_info u
+                                                                   WHERE p.u_id = u.u_id)
+            UNION
+          SELECT @temp:='dataset', p.title, d.description, p.contact_name, i.inst_name,d.name
+            FROM tbl_data_set d, tbl_projects p, tbl_institution i
+            WHERE d.status = 0 AND p.status = 0 AND d.deleted = 0 AND p.deleted = 0 AND d.project_id = 	p.id AND i.inst_id IN (SELECT u.institution_id
+                                                                                                                               FROM tbl_user_info u
+                                                                                                                               WHERE p.u_id = u.u_id)
+          ) AS data ORDER BY title ASC";
