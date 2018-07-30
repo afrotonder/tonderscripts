@@ -1,0 +1,24 @@
+these few steps change the defaut grub background image at startup on ubuntu.
+Works on unbuntu 16 and ubuntu 18. 
+
+One day it chaged back to the default purple and i assume this was due to an
+update. 
+
+
+NOTE: You need to be sudo t do this ;
+      The $ symbol is not part of the commands. it denotes the terminal ;
+
+First open your terminal and with your preffered text editor(i choose nano
+because its a fast edit) open the grub file: 
+
+	$ sudo nano /etc/default/grub
+
+Now add the following line anywhere you like in the file:
+
+	GRUB_BACKGROUND="path/to/image.png"
+
+Save the file according to your text editor and Boom. Restart your computer
+to see results.
+
+Thanks to justen_m on ubuntuforums.org for showing me and the world how this 
+is done.
