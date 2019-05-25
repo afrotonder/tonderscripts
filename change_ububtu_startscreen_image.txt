@@ -1,5 +1,6 @@
 these few steps change the defaut grub background image at startup on ubuntu.
-Works on unbuntu 16 and ubuntu 18. 
+Works on unbuntu 16. Apparently it DOES NOT work on ubuntu 18. Will edit if it
+ever does or if some other solutions shows up. (:
 
 One day it chaged back to the default purple and i assume this was due to an
 update. 
