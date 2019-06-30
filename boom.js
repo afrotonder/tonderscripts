@@ -1,5 +1,19 @@
 // connect, prepare to meet your  t a k 0   m a k e r
 
+/* For my last semester of college, I had to take Biology I class. Taking the class required submitting assignments and studying from 
+   an online platform called Connect, hosted by the McGraw-Hill Company. 
+    
+   Studying and turning in assingments using this platform was a total drag, so I thought about making a script that answers my assignments. 
+   Its not cheating if I work hard and learn something related to my field of study(computer science). :P
+   
+   Long story short, it never fully worked. I managed to answer questions that were simple such as the ones that had only two options to choose from,
+   like true or false. The other questions required choosing from 4 to 6 options and some questions required a whole div be moved and draged
+   to another container in the same page, something I wasnt going to be able to pull off with only 7 days to deliver 10 missing/late assingments.
+   
+   This is what i coded. Lotsa object management in here. 
+
+*/
+
 
 function pressOK(OK) {
 
