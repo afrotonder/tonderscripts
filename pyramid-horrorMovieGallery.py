@@ -1,4 +1,7 @@
-from waitress import serve
+# HOW TO RUN STEPS: https://gist.github.com/afrotonder/3756473ad6a5a2c770d5804c824e1fb2
+
+# from waitress import serve
+from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.response import Response
 
@@ -8,32 +11,26 @@ def hello_world(request):
     return Response('''
                     <style>
                         .header {
-                            
                             color: orange ;
                             background-color: black ;
-                            # margin-left: auto ;
-                            # margin-right: auto ;
                             margin-bottom: 0 ;
                             text-align: center ;
-                                                        width: 100% ;
-                            # height: 2em ;
+                            width: 100% ;
                         }
-                        body {
-                            # width: 100% ;
+                        html, body {
                             margin: 0 0 0 0 ;
+                            width: auto;
                         }
                         .movie-list {
                             top: 0 ;
                             display: flex ;
-                            # flex-direction: row ;
+                            flex-wrap: wrap ;
                             justify-content: space-between ;
                             background-color: orange ;
-                            # width: 100% !important;
-
+                            width: auto ;
                         }
                         .img-container {
                             flex: 0 ;
-                            order: 0 ;
                             padding-top: 1.5em ;
                             height: 20em ;
                             padding-left: 1.5em ;
@@ -95,4 +92,6 @@ if __name__ == '__main__':
         config.add_route('hello', '/')
         config.add_view(hello_world, route_name='hello')
         app = config.make_wsgi_app()
-    serve(app, host='0.0.0.0', port=6543)
+    server = make_server('0.0.0.0', 6543, app)
+    server.serve_forever()
+    # serve(app, host='0.0.0.0', port=6543) # runs with waitress
