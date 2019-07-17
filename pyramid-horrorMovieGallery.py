@@ -16,6 +16,7 @@ def hello_world(request):
                             margin-bottom: 0 ;
                             text-align: center ;
                             width: 100% ;
+                            # height: 
                         }
                         html, body {
                             margin: 0 0 0 0 ;
@@ -45,8 +46,11 @@ def hello_world(request):
                         }
                           
                     </style>
+                    <head>
+                        <link rel="icon" href="https://www.favicon.cc/logo3d/548740.png">
+                    </head>
                     <body>
-                        <h1 class='header'>Tonder Horror Movie Gallery</h1>
+                        <h1 class='header'>&#x26B0 Welcome to The Grim Repo &#x26B0</h1>
                         <div class='movie-list'>
         
                             <div class='img-container'>
@@ -79,7 +83,46 @@ def hello_world(request):
                                 <p> The Hills Have Eyes(2006)</p>
                             </div>
 
+                            <div class='img-container'>
+                                <img src='https://66.media.tumblr.com/22cacdc3e717474dea5f95ea15582ebc/tumblr_n9guttvId61rzhr2go1_1280.jpg'></img>
+                                <p> The Serpent and the Rainbow(1988)</p>
+                            </div>
 
+                            <div class='img-container'>
+                                <img src='https://i.ebayimg.com/images/g/3poAAOSwNSxU~MVt/s-l300.jpg'></img>
+                                <p> Halloween III: Season of the Witch(1982)</p>
+                            </div>
+
+                             <div class='img-container'>
+                                <img src='https://upload.wikimedia.org/wikipedia/en/2/29/All_Hallows%27_Eve_2013_film_poster.jpg'></img>
+                                <p> All Hallows Eve(2013)</p>
+                            </div>
+                                                        
+                            <div class='img-container'>
+                                <img src='https://i.ebayimg.com/12/!!eDp2kQCWM~$(KGrHqF,!lsE1F2hur4BBNTHqHb+0!~~_62.JPG?set_id=89040003C1'></img>
+                                <p> Halloween 2(1981)</p>
+                            </div>
+                        
+
+                            <div class='img-container'>
+                                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEPkfPoghE67pHxlYKrzHEhre4fvTJYjZzL71wr5JKSI9CBwBNxg'></img>
+                                <p> House of a 1000 Corpses(2003)</p>
+                            </div>
+
+                             <div class='img-container'>
+                                <img src='https://images-na.ssl-images-amazon.com/images/I/51BHzd-OvlL._SY445_.jpg'></img>
+                                <p> The Devil's Rejects(2005)</p>
+                            </div>
+
+                            <div class='img-container'>
+                                <img src=''></img>
+                                <p> ()</p>
+                            </div>
+
+                            <div class='img-container'>
+                                <img src=''></img>
+                                <p> ()</p>
+                            </div>
                             
 
                         </div>
@@ -95,3 +138,14 @@ if __name__ == '__main__':
     server = make_server('0.0.0.0', 6543, app)
     server.serve_forever()
     # serve(app, host='0.0.0.0', port=6543) # runs with waitress
+
+
+
+    """
+         template for movie 
+
+            <div class='img-container'>
+                <img src=''></img>
+                <p> ()</p>
+            </div>
+    """
