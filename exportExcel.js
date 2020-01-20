@@ -1,3 +1,5 @@
+// Simple javascript function that requests data from php connection file, recieves result array & exports data to excel.
+// Works well overall but breaks with large data sets.🍕
 function exportExcel(queryValues) {
 
   $.ajax({
