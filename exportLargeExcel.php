@@ -28,9 +28,9 @@ if (isset($_REQUEST['exportExcel'])) {
     // $exportDataQuery =  "select * from your_db where 0 <> 0";
 
     // execute query & get results
-    $stmt = $auth_user->runQuery($exportDataQuery);
-    $stmt->execute();
-    $exportData=$stmt->fetchAll(PDO::FETCH_ASSOC);
+    $execQuery = $auth_user->runQuery($exportDataQuery);
+    $execQuery->execute();
+    $exportData=$execQuery->fetchAll(PDO::FETCH_ASSOC);
     // table header
     $headerCellValues = ['header1', 
                          'header2',
@@ -46,8 +46,6 @@ if (isset($_REQUEST['exportExcel'])) {
     ->build();
 
     $headerRow = WriterEntityFactory::createRowFromArray($headerCellValues, $rowStyle);
-
-    $resArray = []; 
     
     $writer = WriterEntityFactory::createXLSXWriter(); 
     // file name with date concatenated for user benefit
